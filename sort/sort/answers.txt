@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: It took the longest to sort the random50000.txt file.
+
+sort2 uses: Merge Sort
+
+How do you know?: has the fastest time sort all the large file, also the time it took to sort all those large files are kind of close, even if it is random, reversed or sorted.
+
+sort3 uses: Selection sort
+
+How do you know?: It sort the random50000.txt file faster the sort1. Also, at the reversed files.
