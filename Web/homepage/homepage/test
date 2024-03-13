@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
+    </head>
+    <body>
+        <div class="orange-bg">
+            <h1 class= "white-text" style="font-size: 70px">BUÔN NGƯỜI XÂY TỔ</h1>
+            <p class ="lead white-text">Địa chỉ cung cấp người Xây Tổ số 1 thế giới</p>
+        </div>
+    </body>
+</html>
+
+<style>
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+    }
+    .orange-bg {
+        /* background-image: url('../cover.png'); */
+        background-size: cover;
+        background-position: center;
+        filter: brightness(0.8);
+        height: 100vh;
+        text-align: center;
+        transition: padding-top 0.5s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .menu-bg {
+        background-color: #FFA500;
+        height: 11.1%;
+        text-align: center;
+        padding-top: 2%;
+    }
+    
+    .white-text {
+        color: white;
+    
+    @media (max-width: 576px) {
+        .orange-bg {
+            padding-top: 40%; /* Adjust the padding for smaller screens */
+        }
+    }
+    
+    </style>
+    

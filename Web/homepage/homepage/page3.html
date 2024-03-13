@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Pet</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pet-container {
+      text-align: center;
+    }
+
+    .pet-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .btn-action {
+      margin: 10px;
+    }
+
+    .status {
+      margin-top: 20px;
+    }
+
+    .red-bg {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid menu-bar">
+    <div class="text-center">
+        <a href="index.html" class="img-link">
+            <img alt="HL" class="img-fluid logo" style="margin-top:5px" src="../HL.png">
+        </a>
+        <h1>Mời bé cùng nuôi Huy Nguyễn</h1>
+        <video width="200" height="200" autoplay loop>
+            <source src="../vid2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+    </div>
+</div>
+
+<div class="container">
+  <div class="pet-container">
+    <img src="../HN.png" class="img-fluid w-35" alt="Virtual Pet" id="pet-image">
+    <button class="btn btn-primary btn-action" onclick="feedPet()">Feed</button>
+    <button class="btn btn-success btn-action" onclick="playWithPet()">Play</button>
+    <button class="btn btn-danger btn-action" onclick="scoldPet()">Chửi</button>
+    <button class="btn btn-info btn-action" onclick="checkStatus()">Status</button>
+    <p class="status" id="status"></p>
+    <p class="status" id="clock"></p>
+  </div>
+</div>
+
+<script>
+  let hunger = 50;
+  let happiness = 50;
+  let interval;
+  let hours = 0;
+  let minutes = 0;
+
+  function feedPet() {
+    hunger -= Math.floor(Math.random() * 11); // Decrease hunger randomly between 0 to 10
+    if (hunger <= 0 || hunger >= 100) {
+      clearInterval(interval);
+      document.getElementById('status').innerHTML = "RIP Huy Nguyễn";
+      document.body.classList.add('red-bg');
+      document.getElementById('pet-image').src = "../HN2.png"; // Change pet image
+    }
+    updateStatus();
+  }
+
+  function playWithPet() {
+    happiness += Math.floor(Math.random() * 11) - 5; // Increase happiness randomly between -5 to 5
+    if (happiness <= 0 || happiness >= 100) {
+      clearInterval(interval);
+      document.getElementById('status').innerHTML = "RIP Huy Nguyễn";
+      document.body.classList.add('red-bg');
+      document.getElementById('pet-image').src = "../HN2.png"; // Change pet image
+    }
+    updateStatus();
+  }
+
+  function scoldPet() {
+    happiness -= Math.floor(Math.random() * 11); // Decrease happiness randomly between 0 to 10
+    updateStatus();
+  }
+
+  function checkStatus() {
+    updateStatus();
+  }
+
+  function updateStatus() {
+    document.getElementById('status').innerHTML = `Hunger: ${hunger}% | Happiness: ${happiness}%`;
+
+    if (hunger >= 70 || happiness <= 30) {
+      document.getElementById('pet-image').src = "../HN1.png";
+    } else {
+      document.getElementById('pet-image').src = "../HN.png";
+    }
+  }
+
+  function updateClock() {
+    // Update minutes
+    minutes++;
+    if (minutes >= 60) {
+      minutes = 0;
+      // Update hours
+      hours++;
+      if (hours >= 24) {
+        hours = 0;
+      }
+    }
+    document.getElementById('clock').innerHTML = `Current Time: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+
+    // Simulate time passing quickly
+    hunger += Math.random() * 10 - 5; // Random increase/decrease in hunger (-5 to 5)
+    happiness += Math.random() * 10 - 5; // Random increase/decrease in happiness (-5 to 5)
+
+    // Ensure values stay within 0-100 range
+    hunger = Math.min(Math.max(hunger, 0), 100);
+    happiness = Math.min(Math.max(happiness, 0), 100);
+
+    if (hunger >= 100 || hunger <= 0 || happiness >= 100 || happiness <= 0) {
+      clearInterval(interval);
+      document.getElementById('status').innerHTML = "RIP Huy Nguyễn";
+      document.body.classList.add('red-bg');
+      document.getElementById('pet-image').src = "../HN2.png"; // Change pet image
+    }
+
+    updateStatus();
+  }
+
+  // Start with a random time
+  let randomTime = new Date();
+  randomTime.setHours(Math.floor(Math.random() * 24));
+  randomTime.setMinutes(Math.floor(Math.random() * 60));
+  hours = randomTime.getHours();
+  minutes = randomTime.getMinutes();
+
+  // Update clock every second
+  interval = setInterval(updateClock, 1000); // 1 second
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+HTML tag:
+<div>
+<a>
+<h1>
+<h3>
+<script>
+<meta>
+<title>
+<link>
+<body>
+<head>
+<video>
+<img>
+<button>
+<source>
+<p>
+<hr>
+
+CSS properties:
+margin-top
+width
+height
+background-color
+text-color
+padding
+
+javascript:
+function to change theme to dark mode
+function to make the slide works
+function to make page 2 picture interactive while hover or click
+function to make the pet game in page 3, include randomize hunger, happniess, feed, play, scold
